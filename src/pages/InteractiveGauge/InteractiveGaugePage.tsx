@@ -4,8 +4,10 @@ import { addCircleIcn, replayIcn } from "@assets";
 import { Container } from "./InteractiveGaugePage.styles";
 
 const InteractiveGaugePage = () => {
-  const [gauge, setGauge] = useState(0);
-  const [hideButton, setHideButton] = useState(false);
+  const [gauge, setGauge] = useState<number>(0);
+  const [hideButton, setHideButton] = useState<boolean>(false);
+
+  const isGaugeMax = gauge >= 100;
 
   const handleIncrementGauge = () => {
     setGauge((p) => p + 1);
@@ -28,16 +30,14 @@ const InteractiveGaugePage = () => {
   return (
     <Container>
       <SocketWrench value={gauge} />
-      {gauge < 100 && (
+      {!isGaugeMax && (
         <div className="text-helper-wrapper">
           <p>Click Button Below To Increment Gauge</p>
         </div>
       )}
       {!hideButton && (
-        <button
-          onClick={gauge >= 100 ? handleResetGauge : handleIncrementGauge}
-        >
-          <img src={gauge >= 100 ? replayIcn : addCircleIcn} />
+        <button onClick={isGaugeMax ? handleResetGauge : handleIncrementGauge}>
+          <img src={isGaugeMax ? replayIcn : addCircleIcn} />
         </button>
       )}
     </Container>
