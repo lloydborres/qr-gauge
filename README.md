@@ -23,7 +23,7 @@ A react app that scans a QR code and redirect to a page depending on the code sc
       <img src="./docs/images/qr_interactive_gauge.png" width="100%"/><br>
       <sub><em>Figure 1: Interactive Gauge Page</em></sub>
     </td>
-    <td align="center">
+    <td align="center" style="padding-left: 150px;">
       <img src="./docs/images/qr_landing.png" width="100%"/><br>
       <sub><em>Figure 2: Landing Page</em></sub>
     </td>
