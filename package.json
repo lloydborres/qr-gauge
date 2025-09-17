@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "firebase deploy --only hosting",
+    "deploy-test": "firebase hosting:channel:deploy test"
   },
   "dependencies": {
     "@yudiel/react-qr-scanner": "^2.3.1",

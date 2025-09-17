@@ -2,11 +2,16 @@
 
 A react app that scans a QR code and redirect to a page depending on the code scanned.
 
-## Setup
+## Demo
+
+A deployed demo is also available. Please visit
+https://qr-gauge.lloydborres.com.
+
+## Local Setup
 
 1. Clone repository.
 2. Open a terminal and run `npm install`.
-3. Since camera permissions can't be enabled if app is not accessed through https or localhost, a workaround is to use an API Gateway like [ngrok](https://dashboard.ngrok.com). Please create an account and follow installation from the page.
+3. Since camera permissions can't be enabled if app is not accessed through `https` or `localhost`, a workaround is to use an API Gateway like [ngrok](https://dashboard.ngrok.com). Please create an account and follow installation from the page.
 4. Setup your static domain in ngrok and replace the value `static-domain.ngrok-free.app` in [vite.config.ts](vite.config.ts) file with your static address under `server.allowedHosts`.
 5. Run `npm run dev`.
 6. Open a new separate terminal and run `ngrok http --url=static-domain.ngrok-free.app 5173` (replace the static-domain).
@@ -15,7 +20,7 @@ A react app that scans a QR code and redirect to a page depending on the code sc
 ## Instructions
 
 1. Access the root url. You should be navigated to the qr-scanner page automatically
-2. Scan either of the following. You can also use the following string: `InteractiveGauge` and `Landing`.
+2. Scan either of the following. You can also use the following strings: `InteractiveGauge` and `Landing`.
 
 <table align="center">
   <tr>
