@@ -1,69 +1,35 @@
-# React + TypeScript + Vite
+# QR Gauge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A react app that scans a QR code and redirect to a page depending on the code scanned.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone repository.
+2. Open a terminal and run `npm install`.
+3. Since camera permissions can't be enabled if app is not accessed through https or localhost, a workaround is to use an API Gateway like [ngrok](https://dashboard.ngrok.com). Please create an account and follow installation from the page.
+4. Setup your static domain in ngrok and replace the value `static-domain.ngrok-free.app` in [vite.config.ts](vite.config.ts) file with your static address under `server.allowedHosts`.
+5. Run `npm run dev`.
+6. Open a new separate terminal and run `ngrok http --url=static-domain.ngrok-free.app 5173` (replace the static-domain).
+7. Access the static address remotely in your mobile phone to test.
 
-## Expanding the ESLint configuration
+## Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Access the root url. You should be navigated to the qr-scanner page automatically
+2. Scan either of the following. You can also use the following string: `InteractiveGauge` and `Landing`.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="./docs/images/qr_interactive_gauge.png" width="100%"/><br>
+      <sub><em>Figure 1: Interactive Gauge Page</em></sub>
+    </td>
+    <td align="center">
+      <img src="./docs/images/qr_landing.png" width="100%"/><br>
+      <sub><em>Figure 2: Landing Page</em></sub>
+    </td>
+  </tr>
+</table>
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Notes
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Used the library [@yudiel/react-qr-scanner](https://www.npmjs.com/package/@yudiel/react-qr-scanner) instead of `@zxing/browser` or `react-qr-reader` since the former doesn't have documentation while the latter seems outdated and had errors upon installation.
