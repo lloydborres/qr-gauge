@@ -25,6 +25,11 @@ const Container = styled.div`
     padding: 0;
     height: 50px;
     width: 50px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 `;
 
